@@ -6,8 +6,9 @@ const plantsList = (props) => {
     return (
         <div>
             {
+                // Key is unique plant name
                 Object.keys(props.plants).map( key => {
-                    return <Plant plantName={key} date={props.plants[key]}></Plant>
+                    return <Plant key={key} plantName={key} date={props.plants[key]}></Plant>
                 })}
         </div>
     );
