@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Aux from '../hoc/Aux/Aux';
 import PlantsList from '../components/Plants/PlantsList';
-import PlantsControls from '../components/ItemControls/PlantsControls';
+import PlantsControls from '../components/Controls/PlantsControls';
 
 class PlantsBoard extends Component {
 

@@ -1,11 +1,26 @@
-import React from 'react';
+import React, {Component} from 'react';
 import classes from './Plant.module.css'
 
-const plant = (props) => (
-    <div className={classes.Plant}>
-        <div>PlantName: {props.plantName}</div>
-        <div>LastWaterDate: {props.date} </div>
-    </div>
-);
+class Plant extends Component {
+    
+    state = {
+        date: this.props.date
+    }
 
-export default plant;
+    updateDateHandler = () => {
+        let today = new Date().toISOString().slice(0, 10)
+        this.setState({date: today});
+    }
+
+    render() {
+        return (
+        <div className={classes.Plant}>
+            <div>PlantName: {this.props.plantName}</div>
+            <div>LastWaterDate: {this.state.date} </div>
+            <button className={classes.UpdateWaterDateButton} onClick={this.updateDateHandler}>Update water date</button>
+        </div>
+        )
+    }
+}
+
+export default Plant;
