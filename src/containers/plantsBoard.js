@@ -10,17 +10,23 @@ class PlantsBoard extends Component {
         super(props);
         this.state = {
             plants: {
-                aloe: 1,
-                pepper: 2
+                aloe: "some date saved on server or local storage",
+                pepper: "some date saved on server or local storage"
             }
         }
     }
     
     addPlantHandler = () => {
-        const object = this.state.plants;
+        let currentPlants = this.state.plants;
         let newPlant = this.refs.input.value;
-        object[newPlant] = 0;
-        this.setState({object});
+        
+        // Check duplicate plant name
+        if (!currentPlants.hasOwnProperty(newPlant)) {
+            currentPlants[newPlant] = new Date().toISOString().slice(0, 10);
+            this.setState({currentPlants});
+        } else {
+            alert("Plant name already exist. Please enter a unique name!")
+        }
     }
     
     render() {
