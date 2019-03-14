@@ -15,9 +15,9 @@ class Plant extends Component {
     render() {
         return (
         <div className={classes.Plant}>
-            <div>PlantName: {this.props.plantName}</div>
-            <div>LastWaterDate: {this.state.date} </div>
-            <button className={classes.UpdateWaterDateButton} onClick={this.updateDateHandler}>Update water date</button>
+            <div>PlantName: {this.props.plantName} <br/>
+            LastWaterDate: {this.state.date}</div>
+            <button className={classes.UpdateWaterDateButton} onClick={this.updateDateHandler}>I watered today!</button>
         </div>
         )
     }

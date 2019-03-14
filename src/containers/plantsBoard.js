@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Aux from '../hoc/Aux/Aux';
-import classes from './PlantsBoard.module.css'
 import Plant from '../components/Plants/Plant';
+import PlantsBoardStyle from './PlantsBoard.module.css';
 
 
 class PlantsBoard extends Component {
@@ -32,9 +32,8 @@ class PlantsBoard extends Component {
     render() {
         return(
             <Aux>
-                <div>
-                {
-                // Key is unique plant name
+                <div className={PlantsBoardStyle.PlantsList}>
+                {// Key is unique plant name
                 Object.keys(this.state.plants).map( key => {
                     return <Plant key={key} plantName={key} date={this.state.plants[key]}></Plant>
                 })}</div>
