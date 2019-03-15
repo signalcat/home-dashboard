@@ -10,8 +10,8 @@ class PlantsBoard extends Component {
         super(props);
         this.state = {
             plants: {
-                aloe: "some date saved on server or local storage",
-                pepper: "some date saved on server or local storage"
+                aloe: "XXXX-XX-XX",
+                pepper: "XXXX-XX-XX"
             }
         }
     }
@@ -20,12 +20,14 @@ class PlantsBoard extends Component {
         let currentPlants = this.state.plants;
         let newPlant = this.refs.input.value;
         
-        // Check duplicate plant name
-        if (!currentPlants.hasOwnProperty(newPlant)) {
+        // Check duplicate or empty plant name
+        if (newPlant === "") {
+            alert("Plant name can't be empty.")
+        } else if (currentPlants.hasOwnProperty(newPlant)) {
+            alert("Plant name already exist. Please enter a unique name!")
+        } else {
             currentPlants[newPlant] = new Date().toISOString().slice(0, 10);
             this.setState({currentPlants});
-        } else {
-            alert("Plant name already exist. Please enter a unique name!")
         }
     }
     
@@ -33,13 +35,20 @@ class PlantsBoard extends Component {
         return(
             <Aux>
                 <div className={PlantsBoardStyle.PlantsList}>
+
+                <div className={PlantsBoardStyle.AddPlant}>
+                    <input ref="input"/>
+                    <button onClick={this.addPlantHandler}>Add Plant</button><br /><br />
+                </div> 
+                
                 {// Key is unique plant name
                 Object.keys(this.state.plants).map( key => {
                     return <Plant key={key} plantName={key} date={this.state.plants[key]}></Plant>
-                })}</div>
+                })}
 
-                 <input ref="input"/>
-                 <button onClick={this.addPlantHandler}>Add Plant</button><br /><br />
+                </div>
+
+                
             </Aux>
         )
     }  

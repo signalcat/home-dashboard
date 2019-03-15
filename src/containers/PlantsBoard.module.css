@@ -1,15 +1,12 @@
-.AddButton {
-    background-color: aquamarine;
-}
-
-.NewPlantInput {
-    border: 2px solid green;
-}
-
 .PlantsList {
     background-color: rgb(156, 238, 156);
     margin: auto;
     width: 50%;
-    border-style: solid;
     border-width: 5px;
+}
+
+.AddPlant {
+    text-align: center;
+    margin: auto;
+    width: 50%; 
 }

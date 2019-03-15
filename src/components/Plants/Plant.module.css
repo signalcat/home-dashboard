@@ -1,12 +1,17 @@
-.Plant {
+.PlantBox {
     margin: auto;
     margin-bottom: 20px;
     margin-top: 20px;
-    border: 1px solid;
+    /* border: 1px solid blue; */
     display: flex;
     width: 50%;
     background-color: rgb(110, 185, 104);
     padding: 10px;
+    justify-content: space-between;
+}
+
+.PlantInfo {
+    /* border: 2px solid red; */
 }
 
 .UpdateWaterDateButton {
