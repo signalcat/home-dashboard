@@ -38,26 +38,34 @@ class PlantsBoard extends Component {
         let currentPlants = this.state.plants;
         let newPlant = this.refs.input.value;
         let date = new Date().toISOString().slice(0, 10);
-        
+        console.log(this.checkDuplicate(currentPlants, newPlant));
+    
         // Check duplicate or empty plant name
         if (newPlant === "") {
             alert("Plant name can't be empty.")
-        } else if (currentPlants.hasOwnProperty(newPlant)) {
-            alert("Plant name already exist. Please enter a unique name!")
+          } else if (this.checkDuplicate(currentPlants, newPlant)) {
+            alert("Plant " + newPlant + " already exist. Please enter a unique name!")
         } else {
             // Store in DB
             const plant = {
                 plantName: newPlant,
                 lastWaterDate: date
             }
-
-            axios.post('/plants.json', plant)
+            axios.patch('/plants.json', {[newPlant] : plant} )
                 .then(response => {
                     this.loadPlants();
                 })
                 .catch(error => {
                 })
         }
+    }
+
+    checkDuplicate = (plants, name) => {
+        let duplicate = false;
+        plants.forEach( (plant) => {
+            if (plant.plantName === name) duplicate = true;
+        })
+        return duplicate;
     }
     
     render() {
