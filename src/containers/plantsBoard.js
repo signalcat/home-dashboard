@@ -3,6 +3,7 @@ import Aux from '../hoc/Aux/Aux';
 import Plant from '../components/Plants/Plant';
 import PlantsBoardStyle from './PlantsBoard.module.css';
 import axios from '../hoc/axios';
+import {Route, Link} from 'react-router-dom';
 
 class PlantsBoard extends Component {
 
@@ -13,20 +14,24 @@ class PlantsBoard extends Component {
         }
     }
 
-    componentDidMount () {
+    loadPlants = () => {
         axios.get('https://home-dashboard-eb1c4.firebaseio.com/plants.json')
-            .then(res => {
-                const fetchedPlants = [];
-                for (let key in res.data) {
-                    fetchedPlants.push({
-                        ...res.data[key],
-                        id: key
-                    });
-                    this.setState({plants: fetchedPlants});
-                }
-            })
-            .catch(error => {
-            });
+        .then(res => {
+            const fetchedPlants = [];
+            for (let key in res.data) {
+                fetchedPlants.push({
+                    ...res.data[key],
+                    id: key
+                });
+                this.setState({plants: fetchedPlants});
+            }
+        })
+        .catch(error => {
+        });
+    }
+
+    componentDidMount () {
+        this.loadPlants();
     }
     
     addPlantHandler = () => {
@@ -40,22 +45,19 @@ class PlantsBoard extends Component {
         } else if (currentPlants.hasOwnProperty(newPlant)) {
             alert("Plant name already exist. Please enter a unique name!")
         } else {
-            currentPlants[newPlant] = date;
-            this.setState({currentPlants});
-        }
+            // Store in DB
+            const plant = {
+                plantName: newPlant,
+                lastWaterDate: date
+            }
 
-        // Store in DB
-        const plant = {
-            plantName: newPlant,
-            lastWaterDate: date
+            axios.post('/plants.json', plant)
+                .then(response => {
+                    this.loadPlants();
+                })
+                .catch(error => {
+                })
         }
-
-        axios.post('/plants.json', plant)
-            .then(response => {
-            })
-            .catch(error => {
-                
-            })
     }
     
     render() {
