@@ -3,7 +3,6 @@ import Aux from '../hoc/Aux/Aux';
 import Plant from '../components/Plants/Plant';
 import PlantsBoardStyle from './PlantsBoard.module.css';
 import axios from '../hoc/axios';
-import {Route, Link} from 'react-router-dom';
 
 class PlantsBoard extends Component {
 
@@ -38,7 +37,6 @@ class PlantsBoard extends Component {
         let currentPlants = this.state.plants;
         let newPlant = this.refs.input.value;
         let date = new Date().toISOString().slice(0, 10);
-        console.log(this.checkDuplicate(currentPlants, newPlant));
     
         // Check duplicate or empty plant name
         if (newPlant === "") {

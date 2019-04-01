@@ -11,6 +11,9 @@ class Plant extends Component {
     updateDateHandler = () => {
         let today = new Date().toISOString().slice(0, 10)
         this.setState({date: today});
+        axios.patch('https://home-dashboard-eb1c4.firebaseio.com/plants/'+ this.props.plantName +'.json',
+        {lastWaterDate: today}
+        ).then()
     }
 
     deletePlantHandler = (plantName) => {
@@ -18,7 +21,7 @@ class Plant extends Component {
         axios.patch('https://home-dashboard-eb1c4.firebaseio.com/plants.json', 
         {[plantName]:null}
         )
-        .then(res => {console.log(res); console.log(res.data);})
+        .then(res => {})
     }
 
     render() {
