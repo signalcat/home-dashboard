@@ -1,9 +1,11 @@
 .PlantsList {
-    background-color: rgb(156, 238, 156);
     margin: auto;
-    width: 50%;
+    width: 100%;
     border-width: 5px;
     padding: 10px;
+    display: flex;
+    flex-flow: row;
+    flex-wrap: wrap;
 }
 
 .AddPlant {

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Fish from './Fish';
 import LastDateObject from './LastDateObject';
 import axios from '../hoc/axios';
+import classes from './AquaBoard.module.css';
 
 
 class AquaBoard extends Component {
@@ -79,7 +80,7 @@ class AquaBoard extends Component {
 
     render() {
         return (
-            <div>
+            <div className={classes.AquaBoard}>
                 <h1>My Aquarium</h1>
                 <label>Name</label><input ref="input1"/>
                 <label>Action</label><input ref="input2"/>

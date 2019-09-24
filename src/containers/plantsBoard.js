@@ -32,6 +32,10 @@ class PlantsBoard extends Component {
     componentDidMount () {
         this.loadPlants();
     }
+
+    // componentDidUpdate () {
+    //     this.loadPlants();
+    // }
     
     addPlantHandler = () => {
         let currentPlants = this.state.plants;
@@ -69,12 +73,11 @@ class PlantsBoard extends Component {
     render() {
         return(
             <Aux>
-                <div className={PlantsBoardStyle.PlantsList}>
                 <div className={PlantsBoardStyle.AddPlant}>
                     <input ref="input"/>
                     <button onClick={this.addPlantHandler}>Add Plant</button><br /><br />
                 </div> 
-                
+                <div className={PlantsBoardStyle.PlantsList}>
                 {
                 this.state.plants.map( plant => (
                     <Plant key={plant.id} plantName={plant.plantName} date={plant.lastWaterDate}></Plant>

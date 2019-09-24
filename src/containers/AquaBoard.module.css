@@ -1,0 +1,11 @@
+.AquaBoard {
+    margin: auto;
+    background-color: lightskyblue;
+    text-align: center;
+    padding: 10px;
+}
+
+.AquaItem {
+    margin: auto;
+    padding: 10px;
+}
