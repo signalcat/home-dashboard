@@ -32,10 +32,6 @@ class PlantsBoard extends Component {
     componentDidMount () {
         this.loadPlants();
     }
-
-    // componentDidUpdate () {
-    //     this.loadPlants();
-    // }
     
     addPlantHandler = () => {
         let currentPlants = this.state.plants;

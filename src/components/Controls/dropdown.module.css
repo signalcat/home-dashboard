@@ -1,0 +1,25 @@
+.dropDown {
+    margin-left: auto;
+    margin-right: 0;
+    position: relative;
+    display: inline-block;
+}
+
+.option {
+    height: 30px;
+    width: 5px;
+} 
+
+ul {
+    color: green;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    background-color: white;
+    position: absolute;
+    z-index: 1;
+}
+
+li {
+    padding: 10px;
+}

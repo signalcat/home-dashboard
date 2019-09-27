@@ -1,7 +1,8 @@
 import React, {Component} from 'react';
 import classes from './Plant.module.css'
 import axios from '../../hoc/axios';
-import dots from '../../assets/dots.svg';
+import Dropdown from '../Controls/dropdown';
+import watercan from '../../assets/watercan.svg';
 
 class Plant extends Component {
     
@@ -28,13 +29,12 @@ class Plant extends Component {
     render() {
         return (
         <div className={classes.PlantBox}>
+            <Dropdown plantName={this.props.plantName}></Dropdown>
             <div className={classes.PlantInfo}> 
-                <p className={classes.plantName}>{this.props.plantName} <br/></p>            
-                <input type="image" className={classes.option} src={dots}></input>
+                <p className={classes.plantName}>{this.props.plantName} <br/></p> 
+                <p>Last Water Date: {this.state.date}</p>
             </div>
-            Last Water Date: {this.state.date}
-            <button onClick={this.updateDateHandler}>I watered today!</button>
-            <button onClick={this.deletePlantHandler.bind(this, this.props.plantName)}>Delete</button>
+            <input type="image" onClick={this.updateDateHandler} className={classes.watercan} src={watercan}></input>
         </div>
         )
     }
