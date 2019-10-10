@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import {storage} from '../../components/Firebase/index';
+import classes from './ImageUpload.module.css';
 
 class ImageUpload extends Component {
     constructor(props) {
@@ -12,8 +13,8 @@ class ImageUpload extends Component {
 
     selectFile = (e) => {
         if (e.target.files[0]) {
-            const image = e.target.files[0];
-            this.setState({image: image});
+            const imagePath = e.target.files[0];
+            this.setState({image: imagePath});
         }
     }
 
@@ -31,13 +32,16 @@ class ImageUpload extends Component {
                 storage.ref('images').child(imageName).getDownloadURL().then(
                     url => {
                         console.log(url);
-                })
+                        this.setState({url: url});
+                    }
+                )
             });
 
     }
     render () {
         return (
             <div>
+            <img alt="plantImage" className={classes.PlantImage} src={this.state.url}></img>
             <input type="file" onChange={this.selectFile}></input>
             <button onClick={this.handleUpload}>Upload</button>
             </div>

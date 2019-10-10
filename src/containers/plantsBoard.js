@@ -47,7 +47,8 @@ class PlantsBoard extends Component {
             // Store in DB
             const plant = {
                 plantName: newPlant,
-                lastWaterDate: date
+                lastWaterDate: date,
+                imageUrl: ""
             }
             axios.patch('/plants.json', {[newPlant] : plant} )
                 .then(response => {

@@ -33,6 +33,7 @@ class Plant extends Component {
             <Dropdown plantName={this.props.plantName}></Dropdown>
             <div className={classes.PlantInfo}> 
                 <p className={classes.plantName}>{this.props.plantName} <br/></p> 
+                <img alt="No image uploaded" ></img>
                 <ImageUpload></ImageUpload>
                 <p>Last Water Date: {this.state.date}</p>
             </div>
