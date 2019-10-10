@@ -77,7 +77,7 @@ class PlantsBoard extends Component {
                 <div className={PlantsBoardStyle.PlantsList}>
                 {
                 this.state.plants.map( plant => (
-                    <Plant key={plant.id} plantName={plant.plantName} date={plant.lastWaterDate}></Plant>
+                    <Plant key={plant.id} plantName={plant.plantName} date={plant.lastWaterDate} imageUrl={plant.imageUrl}></Plant>
                 ))}
                 </div>
             </Aux>
