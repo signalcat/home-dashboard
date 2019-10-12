@@ -10,7 +10,8 @@ class Plant extends Component {
     state = {
         date: this.props.date,
         image: null,
-        imageUrl: this.props.imageUrl
+        imageUrl: this.props.imageUrl,
+        showPlant: true
     }
 
     updateDateHandler = () => {
@@ -21,12 +22,14 @@ class Plant extends Component {
         ).then()
     }
 
-    deletePlantHandler = (plantName) => {
-        alert("You are going to delete plant " + plantName);
+    deletePlantHandler = () => {
+        alert("You are going to delete plant " + this.props.plantName);
         axios.patch('https://home-dashboard-eb1c4.firebaseio.com/plants.json', 
-        {[plantName]:null}
+        {[this.props.plantName]:null}
         )
-        .then()
+        .then(
+            this.props.postDeletion
+        )
     }
 
     selectFile = (e) => {
@@ -66,19 +69,19 @@ class Plant extends Component {
 
     render() {
         return (
-        <div className={classes.PlantBox}>
-            <Dropdown plantName={this.props.plantName}></Dropdown>
-            <div className={classes.PlantInfo}> 
-                <p className={classes.plantName}>{this.props.plantName} <br/></p> 
-                
-                <img alt="plantImage" className={classes.PlantImage} src={this.state.imageUrl}></img>
-                <input type="file" onChange={this.selectFile}></input>
-                <button onClick={this.handleUpload}>Upload</button>
+                <div className={classes.PlantBox}>
+                    <Dropdown action={this.deletePlantHandler}></Dropdown>
+                    <div className={classes.PlantInfo}> 
+                        <p className={classes.plantName}>{this.props.plantName} <br/></p> 
+                        
+                        <img alt="plantImage" className={classes.PlantImage} src={this.state.imageUrl}></img>
+                        <input type="file" onChange={this.selectFile}></input>
+                        <button onClick={this.handleUpload}>Upload</button>
 
-                <p>Last Water Date: {this.state.date}</p>
-            </div>
-            <input type="image" onClick={this.updateDateHandler} className={classes.watercan} src={watercan}></input>
-        </div>
+                        <p>Last Water Date: {this.state.date}</p>
+                    </div>
+                    <input type="image" onClick={this.updateDateHandler} className={classes.watercan} src={watercan}></input>
+                </div> 
         )
     }
 }

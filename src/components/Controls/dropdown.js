@@ -12,20 +12,13 @@ import axios from '../../hoc/axios';
 // // <!-- Initialize Firebase -->
 // <script src="/__/firebase/init.js"></script>
 
-class Dropdown extends React.Component {
+class Dropdown extends Component {
     constructor() {
         super();
         
         this.state = {
             displayMenu: false,
         };
-    }
-
-    deletePlantHandler = (plantName) => {
-        axios.patch('https://home-dashboard-eb1c4.firebaseio.com/plants.json', 
-        {[plantName]:null}
-        )
-        .then()
     }
 
     showDropdownMenu = (event) => {
@@ -48,7 +41,7 @@ class Dropdown extends React.Component {
                     onClick = {this.showDropdownMenu}></input>
                 { this.state.displayMenu ? (
                     <ul className={classes.ul}>
-                        <li onClick={this.deletePlantHandler.bind(this, this.props.plantName)}>Delete</li>
+                        <li onClick={this.props.action}>Delete</li>
                     </ul>
                     ) : null
                 }
