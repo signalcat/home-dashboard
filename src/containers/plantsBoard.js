@@ -3,12 +3,17 @@ import Aux from '../hoc/Aux/Aux';
 import Plant from '../components/Plants/Plant';
 import PlantsBoardStyle from './PlantsBoard.module.css';
 import axios from '../hoc/axios';
+import plusSign from '../assets/plus.svg'
+import Modal from '../components/Controls/modal';
+import modalStyle from '../components/Controls/modal.module.css';
 
 class PlantsBoard extends Component {
 
     constructor(props) {
         super(props);
         this.state = {
+            show: false,
+            newPlant: "",
             plants: []
         }
     }
@@ -33,9 +38,9 @@ class PlantsBoard extends Component {
         this.loadPlants();
     }
     
-    addPlantHandler = () => {
+    addPlantHandler = (newPlantName) => {
         let currentPlants = this.state.plants;
-        let newPlant = this.refs.input.value;
+        let newPlant = newPlantName;
         let date = new Date().toISOString().slice(0, 10);
     
         // Check duplicate or empty plant name
@@ -56,6 +61,7 @@ class PlantsBoard extends Component {
                 })
                 .catch(error => {
                 })
+            this.toggleModal();
         }
     }
 
@@ -66,20 +72,28 @@ class PlantsBoard extends Component {
         })
         return duplicate;
     }
+
+    toggleModal = () => {
+        let newState = Object.assign({}, this.state);
+        newState.show = !this.state.show;
+        this.setState(newState);
+    }
     
     render() {
         return(
             <Aux>
-                <div className={PlantsBoardStyle.AddPlant}>
-                    <input ref="input"/>
-                    <button onClick={this.addPlantHandler}>Add Plant</button><br /><br />
-                </div> 
                 <div className={PlantsBoardStyle.PlantsList}>
                 {
                 this.state.plants.map( plant => (
                     <Plant key={plant.id} plantName={plant.plantName} date={plant.lastWaterDate} imageUrl={plant.imageUrl} postDeletion={this.loadPlants}></Plant>
                 ))}
+                <div className={PlantsBoardStyle.AddPlant}>
+                    <input type="image" src={plusSign}  className={PlantsBoardStyle.plusSign} onClick={this.toggleModal}></input>
+                </div> 
+                <Modal onClose={this.toggleModal} show={this.state.show} onAdd={this.addPlantHandler}>
+                </Modal>
                 </div>
+                
             </Aux>
         );
     }  

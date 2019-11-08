@@ -1,11 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg width="366px" height="302px" viewBox="0 0 366 302" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<svg width="369px" height="299px" viewBox="0 0 369 299" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
     <!-- Generator: Sketch 49.3 (51167) - http://www.bohemiancoding.com/sketch -->
-    <title>Water Can</title>
+    <title>waterCan</title>
     <desc>Created with Sketch.</desc>
     <defs>
-        <filter x="-3.7%" y="-4.0%" width="111.0%" height="115.9%" filterUnits="objectBoundingBox" id="filter-1">
-            <feOffset dx="8" dy="14" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+        <rect id="path-1" x="0" y="0" width="347" height="277" rx="80"></rect>
+        <filter x="-4.5%" y="-4.5%" width="111.8%" height="114.8%" filterUnits="objectBoundingBox" id="filter-2">
+            <feOffset dx="5" dy="8" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="5.5" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.5 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+        <filter x="-4.4%" y="-3.8%" width="108.9%" height="120.2%" filterUnits="objectBoundingBox" id="filter-3">
+            <feOffset dx="2" dy="5" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
             <feGaussianBlur stdDeviation="2" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
             <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.5 0" type="matrix" in="shadowBlurOuter1" result="shadowMatrixOuter1"></feColorMatrix>
             <feMerge>
@@ -13,40 +19,37 @@
                 <feMergeNode in="SourceGraphic"></feMergeNode>
             </feMerge>
         </filter>
-        <rect id="path-2" x="0" y="0" width="347" height="277" rx="80"></rect>
-        <filter x="-2.0%" y="-1.8%" width="104.0%" height="105.1%" filterUnits="objectBoundingBox" id="filter-3">
+        <path d="M38,96 C17.0131795,96 -7.10542736e-14,78.3152476 -7.10542736e-14,56.5 C-7.10542736e-14,34.6847524 17.0131795,17 38,17 C58.9868205,17 76,34.6847524 76,56.5 C76,78.3152476 58.9868205,96 38,96 Z M38.5,87 C54.7924001,87 68,73.3446849 68,56.5 C68,39.6553151 54.7924001,26 38.5,26 C22.2075999,26 9,39.6553151 9,56.5 C9,73.3446849 22.2075999,87 38.5,87 Z" id="path-4"></path>
+        <filter x="-9.2%" y="-6.3%" width="118.4%" height="117.7%" filterUnits="objectBoundingBox" id="filter-5">
             <feOffset dx="0" dy="2" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
             <feGaussianBlur stdDeviation="2" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
             <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.5 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
         </filter>
-        <path d="M0,0 C8.19557088,0 15.7851681,2.69689544 21.9922586,7.28350071 L16.2243856,13.6893727 C11.6726404,10.7189335 6.28047781,9 0.5,9 C0.333005614,9 0.166335313,9.00143461 7.49400542e-16,9.00429257 L-5.04702569e-16,1.77635684e-15 Z M37.821335,35.6449778 L29.7666089,35.6449778 C28.9420706,28.8858576 25.978074,22.8157328 21.5980931,18.1826018 L27.2204747,11.9383144 C33.0816735,18.1919454 36.9653029,26.4579921 37.821335,35.6449778 Z" id="path-4"></path>
-        <path d="M63.2666388,24.8721723 C66.1456062,36.4190797 65.426801,47.9736821 61.842624,58.2357351 L51.2091568,52.5818203 C53.4439183,45.0902854 53.7513686,36.8053353 51.6862212,28.5224815 C51.6264038,28.2825666 51.5648279,28.0435847 51.5015122,27.8055478 L63.2666388,24.8721723 Z" id="path-6"></path>
-        <path d="M2,-26 C13.9004002,-26 24.9378868,-22.5072351 34.0280221,-16.5469081 L25.9695842,-7.59710615 C19.2412176,-11.577852 11.2767449,-13.8804806 2.74032289,-13.8804806 C2.49306336,-13.8804806 2.24628368,-13.8785487 2,-13.8747002 L2,-26 Z M57.9497255,21.5308862 L46.0079605,21.5308862 C44.7181613,12.732493 40.4646072,4.82354852 34.2252273,-1.27639392 L42.1474457,-10.0749088 C50.8028391,-1.74210349 56.5782208,9.27337081 57.9497255,21.5308862 Z" id="path-8"></path>
+        <path d="M131.794729,39.4241269 L178.287092,0.673942772 L194.305418,0.673942772 L135.570787,66.6479796 L142,113 L30,113 L46.1179057,-7.60280727e-13 L126.326443,-7.60280727e-13 L131.794729,39.4241269 Z" id="path-6"></path>
+        <filter x="-4.3%" y="-4.4%" width="108.5%" height="112.4%" filterUnits="objectBoundingBox" id="filter-7">
+            <feOffset dx="0" dy="2" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="2" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.5 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
     </defs>
     <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <g id="Water-Can" filter="url(#filter-1)" transform="translate(4.000000, 2.000000)">
+        <g id="waterCan" transform="translate(6.000000, 3.000000)">
             <g id="Rectangle-7">
-                <use fill="black" fill-opacity="1" filter="url(#filter-3)" xlink:href="#path-2"></use>
-                <use fill="#C0EBBD" fill-rule="evenodd" xlink:href="#path-2"></use>
+                <use fill="black" fill-opacity="1" filter="url(#filter-2)" xlink:href="#path-1"></use>
+                <use fill="#C0EBBD" fill-rule="evenodd" xlink:href="#path-1"></use>
             </g>
-            <g id="Can" transform="translate(142.000000, 138.500000) rotate(34.000000) translate(-142.000000, -138.500000) translate(40.000000, 78.000000)" fill="#FF5F72">
-                <polygon id="Rectangle-2" points="46.1179057 8 126.326443 8 142 121 30 121"></polygon>
-                <polygon id="Rectangle-3" transform="translate(157.786553, 41.820633) rotate(50.000000) translate(-157.786553, -41.820633) " points="145.572208 4.81002764 155.868589 -7.46072207 170.286553 91.1019883 145.286553 91.1019883"></polygon>
-                <path d="M38,104 C17.0131795,104 2.84217094e-13,86.3152476 2.84217094e-13,64.5 C2.84217094e-13,42.6847524 17.0131795,25 38,25 C58.9868205,25 76,42.6847524 76,64.5 C76,86.3152476 58.9868205,104 38,104 Z M38.5,95 C54.7924001,95 68,81.3446849 68,64.5 C68,47.6553151 54.7924001,34 38.5,34 C22.2075999,34 9,47.6553151 9,64.5 C9,81.3446849 22.2075999,95 38.5,95 Z" id="Combined-Shape"></path>
-            </g>
-            <g id="Water" transform="translate(254.000000, 147.000000)">
-                <mask id="mask-5" fill="white">
-                    <use xlink:href="#path-4"></use>
-                </mask>
-                <use id="Combined-Shape" fill="#98C5FA" xlink:href="#path-4"></use>
-                <mask id="mask-7" fill="white">
-                    <use xlink:href="#path-6"></use>
-                </mask>
-                <use id="Combined-Shape" fill="#98C5FA" transform="translate(58.126830, 41.553954) rotate(4.000000) translate(-58.126830, -41.553954) " xlink:href="#path-6"></use>
-                <mask id="mask-9" fill="white">
-                    <use xlink:href="#path-8"></use>
-                </mask>
-                <use id="Combined-Shape" fill="#98C5FA" transform="translate(29.974863, -2.234557) rotate(-12.000000) translate(-29.974863, 2.234557) " xlink:href="#path-8"></use>
+            <g id="Can" filter="url(#filter-3)" transform="translate(166.690164, 145.309017) rotate(34.000000) translate(-166.690164, -145.309017) translate(48.190164, 85.809017)">
+                <path d="M192.605371,0.712237575 C209.123237,0.953295792 225.023368,5.17423766 232.586231,13.3967732 C235.486047,16.549527 236.307213,21.0083469 236.526094,25.1658588 C236.538302,25.39775 236.550831,25.7518639 236.562194,26.1301889 C236.567235,26.2979935 236.572046,26.4705613 236.576499,26.6393396 C236.587308,27.0490826 236.596004,27.4364918 236.600732,27.6791959 C236.61117,28.2149792 236.600732,27.9591645 236.600732,28.4726638 C236.600732,28.7906556 236.566938,29.1023882 236.50195,29.4069516 C235.244497,35.2999608 222.308486,38.5088678 216.528226,32.4400034 C208.368842,23.8732263 215.908629,1.63695478 192.605371,0.729889499 L192.605371,0.712237575 Z" id="Combined-Shape" fill="#77B3FA"></path>
+                <g id="Group-4" transform="translate(0.854812, 5.795965)">
+                    <g id="Combined-Shape">
+                        <use fill="black" fill-opacity="1" filter="url(#filter-5)" xlink:href="#path-4"></use>
+                        <use fill="#FF5F72" fill-rule="evenodd" xlink:href="#path-4"></use>
+                    </g>
+                    <g id="Combined-Shape">
+                        <use fill="black" fill-opacity="1" filter="url(#filter-7)" xlink:href="#path-6"></use>
+                        <use fill="#FF5F72" fill-rule="evenodd" xlink:href="#path-6"></use>
+                    </g>
+                </g>
             </g>
         </g>
     </g>

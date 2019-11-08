@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="336px" height="337px" viewBox="0 0 336 337" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 49.3 (51167) - http://www.bohemiancoding.com/sketch -->
+    <title>Group 2</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <ellipse id="path-1" cx="158" cy="158.5" rx="158" ry="158.5"></ellipse>
+        <filter x="-4.7%" y="-3.2%" width="112.7%" height="112.6%" filterUnits="objectBoundingBox" id="filter-2">
+            <feOffset dx="5" dy="10" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="5" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.5 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Group-2" transform="translate(5.000000, 0.000000)">
+            <g id="Oval-5">
+                <use fill="black" fill-opacity="1" filter="url(#filter-2)" xlink:href="#path-1"></use>
+                <use fill="#6EB968" fill-rule="evenodd" xlink:href="#path-1"></use>
+            </g>
+            <rect id="Rectangle-8" fill="#FFFFFF" x="141" y="41" width="33" height="236" rx="8"></rect>
+            <rect id="Rectangle-8" fill="#FFFFFF" transform="translate(158.000000, 154.500000) rotate(90.000000) translate(-158.000000, -154.500000) " x="141.5" y="36.5" width="33" height="236" rx="8"></rect>
+        </g>
+    </g>
+</svg>
