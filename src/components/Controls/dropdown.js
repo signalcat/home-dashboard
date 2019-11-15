@@ -3,15 +3,6 @@ import classes from './dropdown.module.css';
 import dots from '../../assets/dots.svg';
 import axios from '../../hoc/axios';
 
-// // <!-- The core Firebase JS SDK is always required and must be listed first -->
-// <script src="/__/firebase/7.0.0/firebase-app.js"></script>
-
-// // <!-- TODO: Add SDKs for Firebase products that you want to use
-//      https://firebase.google.com/docs/web/setup#available-libraries -->
-
-// // <!-- Initialize Firebase -->
-// <script src="/__/firebase/init.js"></script>
-
 class Dropdown extends Component {
     constructor() {
         super();
@@ -41,7 +32,7 @@ class Dropdown extends Component {
                     onClick = {this.showDropdownMenu}></input>
                 { this.state.displayMenu ? (
                     <ul className={classes.ul}>
-                        <li onClick={this.props.action}>Delete</li>
+                        <li onClick={this.props.deletePlant}>Delete Plant</li>
                     </ul>
                     ) : null
                 }

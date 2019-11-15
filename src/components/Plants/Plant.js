@@ -57,6 +57,7 @@ class Plant extends Component {
                             {imageUrl: url})
                             .then(response => {
                                 console.log(response);
+                                this.hideUpload();
                             })
                             .catch(error => {
                                 console.log(error);
@@ -68,16 +69,24 @@ class Plant extends Component {
     }
 
     render() {
+        const uploaded = this.state.imageUrl;
+        let btnSelectFile;
+        let btnUpload;
+
+        if (uploaded === "") {
+            btnSelectFile = <input type="file" onChange={this.selectFile}></input>
+            btnUpload = <button onClick={this.handleUpload}>Upload</button>
+        } else{
+            btnSelectFile = null;
+            btnUpload = null;
+        }
         return (
                 <div className={classes.PlantBox}>
-                    <Dropdown action={this.deletePlantHandler}></Dropdown>
+                    <Dropdown deletePlant={this.deletePlantHandler} selectPhoto={this.selectFile}></Dropdown>
                     <div className={classes.PlantInfo}> 
                         <p className={classes.plantName}>{this.props.plantName} <br/></p> 
-                        
                         <img alt="plantImage" className={classes.PlantImage} src={this.state.imageUrl}></img>
-                        <input type="file" onChange={this.selectFile}></input>
-                        <button onClick={this.handleUpload}>Upload</button>
-
+                            {btnSelectFile}{btnUpload}
                         <p>Last Water Date: {this.state.date}</p>
                     </div>
                     <input type="image" onClick={this.updateDateHandler} className={classes.watercan} src={watercan}></input>
