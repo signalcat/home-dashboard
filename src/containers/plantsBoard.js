@@ -90,6 +90,7 @@ class PlantsBoard extends Component {
                 <div className={PlantsBoardStyle.AddPlant}>
                     <input type="image" src={plusSign}  className={PlantsBoardStyle.plusSign} onClick={this.toggleModal}></input>
                 </div> 
+
                 <Modal onClose={this.toggleModal} show={this.state.show} onAdd={this.addPlantHandler}>
                 </Modal>
                 </div>

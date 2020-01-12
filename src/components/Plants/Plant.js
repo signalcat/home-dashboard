@@ -4,6 +4,7 @@ import axios from '../../hoc/axios';
 import Dropdown from '../Controls/dropdown';
 import {storage} from '../../components/Firebase/index';
 import watercan from '../../assets/watercan.svg';
+import placeHolderImg from '../../assets/placeHolder.svg';
 
 class Plant extends Component {
     
@@ -11,7 +12,7 @@ class Plant extends Component {
         date: this.props.date,
         image: null,
         imageUrl: this.props.imageUrl,
-        showPlant: true
+        showPlant: true,
     }
 
     updateDateHandler = () => {
@@ -34,14 +35,15 @@ class Plant extends Component {
 
     selectFile = (e) => {
         if (e.target.files[0]) {
-            const imagePath = e.target.files[0];
-            this.setState({image: imagePath});
+            const image = e.target.files[0];
+            this.setState({image: image});
+            this.handleUpload(image);
         }
     }
 
-    handleUpload = (e) => {
-        const imageName = this.state.image.name;
-        const uploadTask = storage.ref(`images/${imageName}`).put(this.state.image);
+    handleUpload = (image) => {
+        const imageName = image.name;
+        const uploadTask = storage.ref(`images/${imageName}`).put(image);
         uploadTask.on('state_changed', 
             (snapshot) => {
 
@@ -65,28 +67,27 @@ class Plant extends Component {
                     }
                 )
             });
-
+        this.setState({showUploadBtn: !this.state.showUploadBtn});    
     }
 
     render() {
-        const uploaded = this.state.imageUrl;
-        let btnSelectFile;
-        let btnUpload;
 
-        if (uploaded === "") {
-            btnSelectFile = <input type="file" onChange={this.selectFile}></input>
-            btnUpload = <button onClick={this.handleUpload}>Upload</button>
-        } else{
-            btnSelectFile = null;
-            btnUpload = null;
+        let btnSelectFile;
+        let placeHolder;
+
+        // Display place holder image
+        if (this.state.imageUrl === "") {
+            placeHolder = <label htmlFor='file-input'><img src={placeHolderImg}/></label>
+            btnSelectFile = <input id="file-input" className={classes.btnChooseFile} type="file" onChange={this.selectFile}></input>
         }
+    
         return (
                 <div className={classes.PlantBox}>
                     <Dropdown deletePlant={this.deletePlantHandler} selectPhoto={this.selectFile}></Dropdown>
                     <div className={classes.PlantInfo}> 
                         <p className={classes.plantName}>{this.props.plantName} <br/></p> 
-                        <img alt="plantImage" className={classes.PlantImage} src={this.state.imageUrl}></img>
-                            {btnSelectFile}{btnUpload}
+                        <img className={classes.PlantImage} src={this.state.imageUrl}></img>
+                            {placeHolder}{btnSelectFile}
                         <p>Last Water Date: {this.state.date}</p>
                     </div>
                     <input type="image" onClick={this.updateDateHandler} className={classes.watercan} src={watercan}></input>

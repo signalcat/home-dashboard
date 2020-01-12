@@ -24,6 +24,10 @@
 
 }
 
+.btnChooseFile {
+    display: none;
+}
+
 .PlantImage {
     width: 200px;
 }
