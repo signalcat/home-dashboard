@@ -32,6 +32,12 @@
     width: 200px;
 }
 
+.plantDetails {
+    margin-top: 20px;
+    display: flex;
+    flex-flow: column;
+    align-items: flex-start;
+}
 .watercan {
     margin: 0 auto;
     width: 20%;

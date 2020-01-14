@@ -38,7 +38,10 @@ class PlantsBoard extends Component {
         this.loadPlants();
     }
     
-    addPlantHandler = (newPlantName) => {
+    addPlantHandler = (newPlantName, waterFrequency) => {
+
+        console.log(waterFrequency);
+
         let currentPlants = this.state.plants;
         let newPlant = newPlantName;
         let date = new Date().toISOString().slice(0, 10);
@@ -52,6 +55,7 @@ class PlantsBoard extends Component {
             // Store in DB
             const plant = {
                 plantName: newPlant,
+                waterFrequency: waterFrequency,
                 lastWaterDate: date,
                 imageUrl: ""
             }
@@ -85,7 +89,7 @@ class PlantsBoard extends Component {
                 <div className={PlantsBoardStyle.PlantsList}>
                 {
                 this.state.plants.map( plant => (
-                    <Plant key={plant.id} plantName={plant.plantName} date={plant.lastWaterDate} imageUrl={plant.imageUrl} postDeletion={this.loadPlants}></Plant>
+                    <Plant key={plant.id} plantName={plant.plantName} waterFrequency={plant.waterFrequency} date={plant.lastWaterDate} imageUrl={plant.imageUrl} postDeletion={this.loadPlants}></Plant>
                 ))}
                 <div className={PlantsBoardStyle.AddPlant}>
                     <input type="image" src={plusSign}  className={PlantsBoardStyle.plusSign} onClick={this.toggleModal}></input>

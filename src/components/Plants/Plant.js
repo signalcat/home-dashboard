@@ -88,7 +88,10 @@ class Plant extends Component {
                         <p className={classes.plantName}>{this.props.plantName} <br/></p> 
                         <img className={classes.PlantImage} src={this.state.imageUrl}></img>
                             {placeHolder}{btnSelectFile}
-                        <p>Last Water Date: {this.state.date}</p>
+                        <div className={classes.plantDetails}>
+                            <p>Last Watered at: {this.state.date}</p>
+                            <p>Water every {this.props.waterFrequency} days</p>
+                        </div>    
                     </div>
                     <input type="image" onClick={this.updateDateHandler} className={classes.watercan} src={watercan}></input>
                 </div> 
