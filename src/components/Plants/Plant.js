@@ -5,6 +5,7 @@ import Dropdown from '../Controls/dropdown';
 import {storage} from '../../components/Firebase/index';
 import watercan from '../../assets/watercan.svg';
 import placeHolderImg from '../../assets/placeHolder.svg';
+import ProgressBar from '../DataDisplay/ProgressBar';
 
 class Plant extends Component {
     
@@ -70,6 +71,8 @@ class Plant extends Component {
         this.setState({showUploadBtn: !this.state.showUploadBtn});    
     }
 
+
+
     render() {
 
         let btnSelectFile;
@@ -91,6 +94,7 @@ class Plant extends Component {
                         <div className={classes.plantDetails}>
                             <p>Last Watered at: {this.state.date}</p>
                             <p>Water every {this.props.waterFrequency} days</p>
+                            <ProgressBar waterLevel={'100'}></ProgressBar>
                         </div>    
                     </div>
                     <input type="image" onClick={this.updateDateHandler} className={classes.watercan} src={watercan}></input>

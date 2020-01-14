@@ -14,7 +14,7 @@ class PlantsBoard extends Component {
         this.state = {
             show: false,
             newPlant: "",
-            plants: []
+            plants: [],
         }
     }
 
@@ -39,9 +39,6 @@ class PlantsBoard extends Component {
     }
     
     addPlantHandler = (newPlantName, waterFrequency) => {
-
-        console.log(waterFrequency);
-
         let currentPlants = this.state.plants;
         let newPlant = newPlantName;
         let date = new Date().toISOString().slice(0, 10);
@@ -82,14 +79,31 @@ class PlantsBoard extends Component {
         newState.show = !this.state.show;
         this.setState(newState);
     }
-    
+
+    // calculateWaterLevel = () => {
+    //     const percentage = (new Date().toISOString().slice(0, 10) - plant.lastWaterDate)/plant.waterFrequency;
+    //     console.log(percentage);
+        // if (percentage < 0) {
+        //     this.setState({waterLevel: '0'});
+        //     // Show over due alert
+        // } else {
+        //     this.setState({waterLevel: percentage});
+        // }      
+    //}
+
     render() {
         return(
             <Aux>
                 <div className={PlantsBoardStyle.PlantsList}>
                 {
                 this.state.plants.map( plant => (
-                    <Plant key={plant.id} plantName={plant.plantName} waterFrequency={plant.waterFrequency} date={plant.lastWaterDate} imageUrl={plant.imageUrl} postDeletion={this.loadPlants}></Plant>
+                    <Plant key={plant.id} 
+                        plantName={plant.plantName} 
+                        imageUrl={plant.imageUrl} 
+                        date={plant.lastWaterDate} 
+                        waterFrequency={plant.waterFrequency} 
+                        postDeletion={this.loadPlants}>
+                    </Plant>
                 ))}
                 <div className={PlantsBoardStyle.AddPlant}>
                     <input type="image" src={plusSign}  className={PlantsBoardStyle.plusSign} onClick={this.toggleModal}></input>
