@@ -17,11 +17,14 @@ class Plant extends Component {
     }
 
     updateDateHandler = () => {
-        let today = new Date().toISOString().slice(0, 10)
-        this.setState({date: today});
+        let today = new Date();
         axios.patch('https://home-dashboard-eb1c4.firebaseio.com/plants/'+ this.props.plantName +'.json',
         {lastWaterDate: today}
-        ).then()
+        ).then(
+            resolve => {
+                this.props.reloadPlants();
+            }
+        )
     }
 
     deletePlantHandler = () => {
@@ -30,7 +33,9 @@ class Plant extends Component {
         {[this.props.plantName]:null}
         )
         .then(
-            this.props.postDeletion
+            resolve => {
+                this.props.reloadPlants();
+            }
         )
     }
 
@@ -71,8 +76,6 @@ class Plant extends Component {
         this.setState({showUploadBtn: !this.state.showUploadBtn});    
     }
 
-
-
     render() {
 
         let btnSelectFile;
@@ -92,9 +95,9 @@ class Plant extends Component {
                         <img className={classes.PlantImage} src={this.state.imageUrl}></img>
                             {placeHolder}{btnSelectFile}
                         <div className={classes.plantDetails}>
-                            <p>Last Watered at: {this.state.date}</p>
+                            <p>Last Watered at: {this.props.date.slice(0,10)}</p>
                             <p>Water every {this.props.waterFrequency} days</p>
-                            <ProgressBar waterLevel={'100'}></ProgressBar>
+                            <ProgressBar waterLevel={this.props.waterLevel}></ProgressBar>
                         </div>    
                     </div>
                     <input type="image" onClick={this.updateDateHandler} className={classes.watercan} src={watercan}></input>

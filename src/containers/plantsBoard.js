@@ -15,7 +15,16 @@ class PlantsBoard extends Component {
             show: false,
             newPlant: "",
             plants: [],
+            timer: 1
         }
+    }
+
+    calculateWaterLevel = (lastDate, freq) => {
+        const curDate = new Date();
+        let diffInMs = curDate.getTime() - Date.parse(lastDate);
+        let totalMsInterval = (1000*60*60*24) * freq;
+        let percentage = (1 - diffInMs / totalMsInterval)*100;
+        return percentage;
     }
 
     loadPlants = () => {
@@ -23,25 +32,44 @@ class PlantsBoard extends Component {
         .then(res => {
             const fetchedPlants = [];
             for (let key in res.data) {
+                // Calculate the water level 
+                const percentage = this.calculateWaterLevel(res.data[key].lastWaterDate, res.data[key].waterFrequency);
                 fetchedPlants.push({
                     ...res.data[key],
-                    id: key
+                    id: key,
+                    percentage: percentage
                 });
                 this.setState({plants: fetchedPlants});
             }
         })
         .catch(error => {
+            console.log(error);
         });
+    }
+
+    timer = () => {
+        const updatedPlants = [];
+        for (let key in this.state.plants) {
+        let udpatedPercentage = this.calculateWaterLevel(this.state.plants[key].lastWaterDate, this.state.plants[key].waterFrequency);
+        console.log('In timer, ' + udpatedPercentage);
+        updatedPlants.push({
+           ...this.state.plants[key],
+           id: key,
+           percentage: udpatedPercentage
+        });    
+        }
+        this.setState({plants: updatedPlants});
     }
 
     componentDidMount () {
         this.loadPlants();
+        setInterval(this.timer, 3000);
     }
     
     addPlantHandler = (newPlantName, waterFrequency) => {
         let currentPlants = this.state.plants;
         let newPlant = newPlantName;
-        let date = new Date().toISOString().slice(0, 10);
+        let date = new Date();
     
         // Check duplicate or empty plant name
         if (newPlant === "") {
@@ -54,7 +82,7 @@ class PlantsBoard extends Component {
                 plantName: newPlant,
                 waterFrequency: waterFrequency,
                 lastWaterDate: date,
-                imageUrl: ""
+                imageUrl: "",
             }
             axios.patch('/plants.json', {[newPlant] : plant} )
                 .then(response => {
@@ -80,18 +108,8 @@ class PlantsBoard extends Component {
         this.setState(newState);
     }
 
-    // calculateWaterLevel = () => {
-    //     const percentage = (new Date().toISOString().slice(0, 10) - plant.lastWaterDate)/plant.waterFrequency;
-    //     console.log(percentage);
-        // if (percentage < 0) {
-        //     this.setState({waterLevel: '0'});
-        //     // Show over due alert
-        // } else {
-        //     this.setState({waterLevel: percentage});
-        // }      
-    //}
-
     render() {
+        //this.state.plants.map((plant) => (console.log('In render, ' + plant.percentage)));
         return(
             <Aux>
                 <div className={PlantsBoardStyle.PlantsList}>
@@ -102,7 +120,8 @@ class PlantsBoard extends Component {
                         imageUrl={plant.imageUrl} 
                         date={plant.lastWaterDate} 
                         waterFrequency={plant.waterFrequency} 
-                        postDeletion={this.loadPlants}>
+                        waterLevel={plant.percentage}
+                        reloadPlants={this.loadPlants}>
                     </Plant>
                 ))}
                 <div className={PlantsBoardStyle.AddPlant}>
