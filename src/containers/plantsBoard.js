@@ -63,7 +63,11 @@ class PlantsBoard extends Component {
 
     componentDidMount () {
         this.loadPlants();
-        setInterval(this.timer, 3000);
+        this.interval = setInterval(() => this.timer(), 3000);
+    }
+
+    componentWillUnmount() {
+        clearInterval(this.interval);
     }
     
     addPlantHandler = (newPlantName, waterFrequency) => {
